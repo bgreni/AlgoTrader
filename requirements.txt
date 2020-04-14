@@ -1,3 +1,8 @@
-mindsdb
+fbprophet
 iexfinance
 matplotlib
+python-dotenv
+colorlog
+numpy
+mindsdb
+begins
