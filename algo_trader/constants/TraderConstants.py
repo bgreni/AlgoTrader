@@ -1,4 +1,6 @@
-class TraderConstants:
+from aenum import Constant
+
+class TraderConstants(Constant):
     ORDER_CLASS_SIMPLE = 'simple'
     BUY_ORDER = 'buy'
     ORDER_MARKET = 'market'

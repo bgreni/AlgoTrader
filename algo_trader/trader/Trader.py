@@ -3,7 +3,7 @@ from algo_trader.logger import log
 from dotenv import load_dotenv
 from iexfinance.stocks import Stock
 from algo_trader.exceptions.algo_trader_exceptions import NoEnvException
-from .constants import TraderConstants as TC
+from algo_trader.constants.TraderConstants import TraderConstants as TC
 logger = log.create_logger(__name__)
 
 class Trader:
@@ -17,7 +17,8 @@ class Trader:
         # not sure if theres any actual use for doing this
         # self.account = self.api.get_account()
     
-    def buy(self, stock: str, qty: str='1', 
+    def buy(self, stock: str, 
+            qty: str='1', 
             bracket_order_info: dict=None, 
             order_class: str=TC.ORDER_CLASS_SIMPLE) -> tradeapi.entity.Order:
             

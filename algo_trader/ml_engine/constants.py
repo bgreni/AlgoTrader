@@ -1,3 +1,0 @@
-
-class MLEngineConstants:
-    pass

@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 from iexfinance.altdata import get_social_sentiment
 from dotenv import load_dotenv
-from .constants import StockDataConstants
+from algo_trader.constants.StockDataConstants import StockDataConstants as SC
 import colorlog
 import numpy as np
 import pandas as pd
@@ -24,7 +24,7 @@ class StockData:
 
         os.environ['IEX_API_VERSION'] = IEX_API_VERSION
 
-        if IEX_API_VERSION == StockDataConstants.IEX_API_VERSION_SANDBOX:
+        if IEX_API_VERSION == SC.IEX_API_VERSION_SANDBOX:
             os.environ['IEX_TOKEN'] = os.getenv('IEX_SANDBOX_KEY')
         else:
             os.environ['IEX_TOKEN'] = os.getenv('IEX_KEY')
