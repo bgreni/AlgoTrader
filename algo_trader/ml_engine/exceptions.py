@@ -1,3 +1,0 @@
-
-class DataNotSetException(Exception):
-    pass

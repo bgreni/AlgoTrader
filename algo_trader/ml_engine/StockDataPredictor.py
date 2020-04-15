@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from .exceptions import DataNotSetException
+from algo_trader.exceptions.algo_trader_exceptions import NoEnvException
 import colorlog
 from fbprophet import Prophet
 from algo_trader.logger import log

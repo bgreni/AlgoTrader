@@ -1,3 +1,0 @@
-
-class NoEnvException(Exception):
-    pass

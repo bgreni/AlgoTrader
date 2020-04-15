@@ -8,7 +8,7 @@ import colorlog
 import numpy as np
 import pandas as pd
 from algo_trader.logger import log
-from .exceptions import NoEnvException
+from algo_trader.exceptions.algo_trader_exceptions import NoEnvException
 
 logger = log.create_logger(__name__)
 

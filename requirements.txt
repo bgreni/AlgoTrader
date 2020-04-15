@@ -6,3 +6,4 @@ colorlog
 numpy
 mindsdb
 begins
+alpaca-trade-api
