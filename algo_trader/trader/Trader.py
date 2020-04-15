@@ -17,10 +17,8 @@ class Trader:
         # not sure if theres any actual use for doing this
         # self.account = self.api.get_account()
     
-    def buy(self, stock: str, 
-            qty: str='1', 
-            bracket_order_info: dict=None, 
-            order_class: str=TC.ORDER_CLASS_SIMPLE) -> tradeapi.entity.Order:
+    def buy(self, stock, qty, bracket_order_info, 
+            order_class=TC.ORDER_CLASS_SIMPLE) -> tradeapi.entity.Order:
             
         if order_class == TC.ORDER_CLASS_SIMPLE:
             return self.api.submit_order(

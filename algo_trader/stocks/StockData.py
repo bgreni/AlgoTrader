@@ -15,7 +15,7 @@ logger = log.create_logger(__name__)
 
 class StockData:
 
-    def __init__(self):
+    def __init__(self, key=None, sandbox_key=None):
         
         if not load_dotenv():
             raise NoEnvException('You have no .env file to read IEX info from')
@@ -29,7 +29,7 @@ class StockData:
         else:
             os.environ['IEX_TOKEN'] = os.getenv('IEX_KEY')
 
-    def get_stock(self, stock: str) -> Stock:
+    def get_stock(self, stock) -> Stock:
         """
         Returns Stock object for the given stock
 
@@ -41,7 +41,7 @@ class StockData:
         """
         return Stock(stock, output_format='pandas')
     
-    def get_stock_historical_data(self, stock: str, start: datetime, end: datetime) -> pd.DataFrame:
+    def get_stock_historical_data(self, stock, start, end) -> pd.DataFrame:
         """
         Get historical stock data for a given stock over a given time period
 
