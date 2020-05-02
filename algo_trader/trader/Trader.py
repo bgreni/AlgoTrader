@@ -3,7 +3,7 @@ from algo_trader.logger import log
 from dotenv import load_dotenv
 from iexfinance.stocks import Stock
 from algo_trader.exceptions.algo_trader_exceptions import NoEnvException, InvalidOrderClassException
-from algo_trader.constants.TraderConstants import TraderConstants as TC
+from algo_trader.constants.AlgoTraderContants import TraderConstants as TC
 logger = log.create_logger(__name__)
 
 class Trader:

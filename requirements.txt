@@ -10,3 +10,4 @@ aenum
 pytest
 pytest-cov
 mockito
+GoogleNews

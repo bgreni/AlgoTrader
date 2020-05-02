@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import os
 from iexfinance.altdata import get_social_sentiment
 from dotenv import load_dotenv
-from algo_trader.constants.StockDataConstants import StockDataConstants as SC
+from algo_trader.constants.AlgoTraderContants import StockDataConstants as SC
 import colorlog
 import numpy as np
 import pandas as pd
@@ -59,14 +59,16 @@ class StockData:
             stock (str): ticker string of the stock
         """
         self.stock = Stock(stock)
-        self.pe_ratio = self.stock.get_quote()[SC.PE_RATIO]
-
+        
+        self.quote = self.stock.get_quote()
+        self.pe_ratio = self.quote[SC.PE_RATIO]
         self.price_to_book = get_data_points(stock, SC.PRICE_TO_BOOK)
         self.debt_to_equity = get_data_points(stock, SC.DEBT_TO_EQUITY)
         self.peg = get_data_points(stock, SC.PEG)
         self.beta = get_data_points(stock, SC.BETA)
         self.cash_flow = get_data_points(stock, SC.CASH_FLOW)
         self.price_to_sales = get_data_points(stock, SC.PRICE_TO_SALES)
+        self.payout_ratio = get_data_points(stock, SC.TTMDIVIENDS) / get_data_points(stock, SC.TTMEPS)
 
         self.pre_built = True
 
@@ -82,6 +84,27 @@ class StockData:
             Stock: Stock object for the given stock
         """
         return Stock(stock)
+
+    # TODO: I'm not entirely sure if this is correct
+    def get_payout_ratio(self, stock=None) -> float:
+        """
+        Get payout ration of a given stock
+
+        Parameters:
+            stock (str): ticker string of the stock
+
+        Returns:
+            (float): dividends payout to earnings of the stock
+        """
+        if self.pre_built:
+            return self.payout_ratio
+
+        self._check_args(stock)
+        
+        dividends_per_share = get_data_points(stock, SC.TTMDIVIENDS)
+        eps = get_data_points(stock, SC.TTMEPS)
+
+        return dividends_per_share / eps
 
 
     def get_price_to_sales(self, stock=None) -> float:
